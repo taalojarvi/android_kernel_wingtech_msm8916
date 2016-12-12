@@ -1703,7 +1703,8 @@ restart_locked:
 	 * - unix_peer(sk) == NULL, destination address bound to sk
 	 * - unix_peer(sk) == sk by time of get but disconnected before lock
 	 */
-	if (unlikely(unix_peer(other) != sk && unix_recvq_full(other))) {
+	if (other != sk &&
+	    unlikely(unix_peer(other) != sk && unix_recvq_full(other))) {
 		if (timeo) {
 			timeo = unix_wait_for_peer(other, timeo);
 
