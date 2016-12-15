@@ -27,7 +27,7 @@ yellow='\033[0;33m'
 red='\033[0;31m'
 nocol='\033[0m'
 # Modify the following variable if you want to build
-export CROSS_COMPILE="/home/saiko94/kernel/arm-eabi-4.9/bin/arm-eabi-"
+export CROSS_COMPILE="/home/saiko94/kernel/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-"
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER="ashish.m"
