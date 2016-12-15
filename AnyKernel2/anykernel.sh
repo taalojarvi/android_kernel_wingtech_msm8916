@@ -8,8 +8,8 @@ do.devicecheck=0
 do.initd=1
 do.modules=0
 do.cleanup=1
-device.name1=wt88047
-device.name2=Redmi 2
+device.name1=
+device.name2=
 device.name3=
 device.name4=
 device.name5=
@@ -35,7 +35,7 @@ dump_boot;
 # begin ramdisk changes
 
 # add zetsubou initialization script
-insert_line init.rc "import /init.zetsubou.rc" after "import /init.cm.rc" "import /init.zetsubou.rc";
+insert_line init.rc "import /init.zetsubou.rc" after "import /init.environ.rc" "import /init.zetsubou.rc";
 
 # end ramdisk changes
 
