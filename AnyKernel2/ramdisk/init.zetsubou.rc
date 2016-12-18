@@ -1,6 +1,13 @@
 # Zetsubou init script
 # Thanks to franciscofranco, ak, nathanchancellor and frap129
 
+on boot
+   # enable sweep2wake up
+   chown root root /sys/android_touch/sweep2wake
+   chmod 666 /sys/android_touch/sweep2wake
+   write /sys/android_touch/sweep2wake 4
+   chmod 644 /sys/android_touch/sweep2wake
+
 on property:sys.boot_completed=1
    # set I/O scheduler
    write /sys/block/mmcblk0/queue/rq_affinity 0
