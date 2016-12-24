@@ -36,6 +36,21 @@ fi;
 chmod -R 755 /tmp/anykernel/tools /tmp/anykernel/bin;
 bb=/tmp/anykernel/tools/busybox;
 
+ui_print " ";
+ui_print " ";
+ui_print "              __                __                 ";
+ui_print " ____  ___   / /_ _____ __  __ / /_   ____   __  __";
+ui_print "/_  / / _ \ / __// ___// / / // __ \ / __ \ / / / /";
+ui_print " / /_/  __// /_ (__  )/ /_/ // /_/ // /_/ // /_/ / ";
+ui_print "/___/\___/ \__//____/ \__,_//_.___/ \____/ \__,_/  ";
+ui_print "        __                             __";              
+ui_print "       / /__ ___   _____ ____   ___   / /";              
+ui_print "      / //_// _ \ / ___// __ \ / _ \ / / ";              
+ui_print "     / ,<  /  __// /   / / / //  __// /  ";              
+ui_print "    /_/|_| \___//_/   /_/ /_/ \___//_/   ";              
+ui_print " ";                                                  
+ui_print " ";
+
 ui_print "$(file_getprop /tmp/anykernel/anykernel.sh kernel.string)";
 ui_print " ";
 ui_print "AnyKernel2 by osm0sis @ xda-developers";
