@@ -32,18 +32,45 @@ export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER="ashish.m"
 export KBUILD_BUILD_HOST="DespairInc."
-make zetsubou_defconfig
-make -j5
 
+compile_kernel ()
+{
+echo -e "$blue***********************************************"
+echo "          Compiling wt88047 kernel          "
+echo -e "***********************************************$nocol"
+rm -f $KERN_IMG
+make zetsubou_defconfig -j5
+make -j5
+if ! [ -a $KERN_IMG ];
+then
+echo -e "$red Kernel Compilation failed! Fix the errors! $nocol"
+exit 1
+fi
 $DTBTOOL -2 -o $KERNEL_DIR/arch/arm/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/dts/
+}
+
+case $1 in
+clean)
+make ARCH=arm -j5 clean mrproper
+rm -rf $KERNEL_DIR/arch/arm/boot/dt.img
+;;
+dt)
+make zetsubou_defconfig -j5
+$DTBTOOL -2 -o $KERNEL_DIR/arch/arm/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/dts/
+;;
+*)
+compile_kernel
+;;
+esac
 echo -e "$blue***********************************************"
 echo "          creating flashable zip          "
 echo -e "***********************************************$nocol"
 cd $ZIP_DIR
 make clean
-cp $DT_IMG $ZIP_DIR/dtb
-cp $KERN_IMG $ZIP_DIR
+cp $DT_IMG $ZIP_DIR/anykernel/dtb
+cp $KERN_IMG $ZIP_DIR/anykernel
 make
+make sign
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 echo -e "$yellow Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.$nocol"
