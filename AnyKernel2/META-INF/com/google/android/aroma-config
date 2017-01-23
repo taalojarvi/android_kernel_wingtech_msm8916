@@ -85,24 +85,14 @@ alert(
 );
 
 selectbox(
-  "\nCPU Settings","<@center><b>\nSelect min/max frequency and hotplug\n</b></@>","","cpu0.prop",
-  "Minimum", "", 2,
-  "200MHz","",0,
-  "302MHz","",0,
-  "400MHz","",1,
-  "533MHz","",0,
-  "800MHz","",0,
-  "Maximum", "", 2,
+  "\nCPU Settings","<@center><b>\nSelect maximum CPU frequency\n</b></@>","","cpu0.prop",
   "1843MHz","",0,
   "1766MHz","",0,
   "1612MHz","",0,
   "1516MHz","",0,
-  "1401MHz","",0,
+  "1401MHz","",1,
   "1363MHz","",0,
-  "1209MHz","",1,
-  "Hotplug", "", 2,
-  "AutoSMP","",0,
-  "Disabled","",1
+  "1209MHz","",0
 );
 
 selectbox(

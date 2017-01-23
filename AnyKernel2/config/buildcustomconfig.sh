@@ -56,27 +56,10 @@ echo "write /sys/block/mmcblk0/queue/read_ahead_kb 256" >> $CONFIGFILE
 
 echo "" >> $CONFIGFILE
 
-echo "#set min/max frequencies" >> $CONFIGFILE
-echo "#a53 min" >> $CONFIGFILE
-echo "chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq" >> $CONFIGFILE
-echo "chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq" >> $CONFIGFILE
-cpu0=`grep selected.1 /tmp/aroma/cpu0.prop | cut -d '=' -f2`
-if [ $cpu0 = 1 ]; then
-echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 200000" >> $CONFIGFILE
-elif [ $cpu0 = 2 ]; then
-echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 302000" >> $CONFIGFILE
-elif [ $cpu0 = 3 ]; then
-echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 400000" >> $CONFIGFILE
-elif [ $cpu0 = 4 ]; then
-echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 533330" >> $CONFIGFILE
-else
-echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 800000" >> $CONFIGFILE
-fi
-#
 echo "#a53 max" >> $CONFIGFILE
 echo "chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq" >> $CONFIGFILE
 echo "chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq" >> $CONFIGFILE
-cpu0=`grep selected.2 /tmp/aroma/cpu0.prop | cut -d '=' -f2`
+cpu0=`grep selected.0 /tmp/aroma/cpu0.prop | cut -d '=' -f2`
 if [ $cpu0 = 1 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1843200" >> $CONFIGFILE
 elif [ $cpu0 = 2 ]; then
@@ -91,14 +74,6 @@ elif [ $cpu0 = 6 ]; then
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1363200" >> $CONFIGFILE
 else
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1209600" >> $CONFIGFILE
-fi
-#
-echo "#set hotplug" >> $CONFIGFILE
-cpu0=`grep selected.3 /tmp/aroma/cpu0.prop | cut -d '=' -f2`
-if [ $cpu0 = 1 ]; then
-echo "write /sys/module/autosmp/parameters/enabled Y" >> $CONFIGFILE
-else
-echo "write /sys/module/autosmp/parameters/enabled N" >> $CONFIGFILE
 fi
 
 echo "" >> $CONFIGFILE

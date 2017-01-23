@@ -29,18 +29,10 @@ echo "write /sys/block/mmcblk0/queue/read_ahead_kb 256" >> $CONFIGFILE
 echo "" >> $CONFIGFILE
 
 echo "#set frequencies" >> $CONFIGFILE
-echo "#min" >> $CONFIGFILE
-echo "chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq" >> $CONFIGFILE
-echo "chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq" >> $CONFIGFILE
-echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 400000" >> $CONFIGFILE
 echo "#a53 max" >> $CONFIGFILE
 echo "chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq" >> $CONFIGFILE
 echo "chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq" >> $CONFIGFILE
 echo "write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401600" >> $CONFIGFILE
-echo "" >> $CONFIGFILE
-
-echo "#set hotplug" >> $CONFIGFILE
-echo "write /sys/module/autosmp/parameters/enabled Y" >> $CONFIGFILE
 echo "" >> $CONFIGFILE
 
 echo "#gpu" >> $CONFIGFILE
