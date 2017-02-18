@@ -1,1 +1,3 @@
-script:
+languages:android
+sudo:true
+script:make
