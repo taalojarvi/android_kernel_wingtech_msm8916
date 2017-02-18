@@ -1,2 +1,2 @@
-language:android
-script:make
+language: android
+script: make
